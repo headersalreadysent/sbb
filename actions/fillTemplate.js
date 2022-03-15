@@ -231,28 +231,36 @@ class GenerateList {
 		}).toArray().forEach((code) => {
 			sorted[code] = data[code];
 		})
+		let addedCodes = [];
 		for (let code in sorted) {
 			let name = data[code];
 			let parts = code.split('.');
 
 			//for level 1
-			if (fullEko4[parts[0]] != undefined) {
-				rows.push([
-					parts[0], 4, this.year, fullEko4[parts[0]], fullEko4[parts[0]],
-					fullEko4[parts[0]], fullEko4[parts[0]], //english
-					fullEko4[parts[0]], fullEko4[parts[0]] //other
-				]);
+			let level1 = parts[0];
+			if (fullEko4[level1] != undefined) {
+				if (addedCodes.indexOf(level1) == -1) {
+					rows.push([
+						level1, 4, this.year, fullEko4[level1], fullEko4[level1],
+						fullEko4[level1], fullEko4[level1], //english
+						fullEko4[level1], fullEko4[level1] //other
+					]);
+					addedCodes.push(level1)
+				}
 			} else {
-				return console.log(chalk.red.bold("Ekonomik tertip " + parts[0] + " bulunamadı."))
+				return console.log(chalk.red.bold("Ekonomik tertip " + level1 + " bulunamadı."))
 			}
 			//for level 2
 			let level2 = parts[0] + '.' + parts[1]
 			if (fullEko4[level2] != undefined) {
-				rows.push([
-					level2, 4, this.year, fullEko4[level2], fullEko4[level2],
-					fullEko4[level2], fullEko4[level2], //english
-					fullEko4[level2], fullEko4[level2] //other
-				]);
+				if (addedCodes.indexOf(level2) == -1) {
+					rows.push([
+						level2, 4, this.year, fullEko4[level2], fullEko4[level2],
+						fullEko4[level2], fullEko4[level2], //english
+						fullEko4[level2], fullEko4[level2] //other
+					]);
+					addedCodes.push(level2)
+				}
 			} else {
 				return console.log(chalk.red.bold("Ekonomik tertip " + level2 + " bulunamadı."))
 			}
@@ -260,11 +268,14 @@ class GenerateList {
 			//for level 3
 			let level3 = level2 + '.' + parts[2]
 			if (fullEko4[level3] != undefined) {
-				rows.push([
-					level3, 4, this.year, fullEko4[level3], fullEko4[level3],
-					fullEko4[level3], fullEko4[level3], //english
-					fullEko4[level3], fullEko4[level3] //other
-				]);
+				if (addedCodes.indexOf(level3) == -1) {
+					rows.push([
+						level3, 4, this.year, fullEko4[level3], fullEko4[level3],
+						fullEko4[level3], fullEko4[level3], //english
+						fullEko4[level3], fullEko4[level3] //other
+					]);
+					addedCodes.push(level3)
+				}
 			} else {
 				return console.log(chalk.red.bold("Ekonomik tertip " + level3 + " bulunamadı."))
 			}
