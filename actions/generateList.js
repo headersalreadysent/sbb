@@ -29,7 +29,7 @@ class GenerateList {
 				let path = fs.realpathSync('./odenek.json')
 				var data = JSON.parse(fs.readFileSync(path).toString());
 				if (type == 'hepsi') {
-					this.generateAll()
+					this.generateAll(data)
 				} else {
 					let map = this.generateMap(data, type)
 					fs.writeFileSync('./tertip-' + type + '.json', JSON.stringify(map, null, 4))
@@ -40,7 +40,7 @@ class GenerateList {
 			});
 	}
 
-	generateAll() {
+	generateAll(data) {
 		['program', 'kurumsal', 'finansman', 'ekonomik'].forEach((typeItem) => {
 			let map = this.generateMap(data, typeItem)
 			fs.writeFileSync('./tertip-' + typeItem + '.json', JSON.stringify(map, null, 4))
