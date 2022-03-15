@@ -8,6 +8,7 @@ program
 
 require('./actions/cleanCsv')(program);
 require('./actions/generateList')(program);
+require('./actions/fillTemplate')(program);
 
 
 program.parse();

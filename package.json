@@ -5,8 +5,10 @@
 	"license": "MIT",
 	"dependencies": {
 		"chalk": "2.4.1",
+		"collect.js": "^4.31.3",
 		"commander": "^9.0.0",
-		"csv-parser": "^3.0.0"
+		"csv-parser": "^3.0.0",
+		"exceljs": "^4.3.0"
 	},
 	"scripts": {
 		"package": "pkg ."
@@ -15,6 +17,7 @@
 	"pkg": {
 		"targets": [
 			"node14-linux-x64"
-		]
+		],
+		"assets": [ "templates/**/*" ]
 	}
 }
